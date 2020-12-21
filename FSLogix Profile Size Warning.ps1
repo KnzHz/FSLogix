@@ -43,7 +43,8 @@ $run = 1
 $firstrun = 1
 #Define first Hard warning
 
-
+# add the required .NET assembly
+Add-Type -AssemblyName System.Windows.Forms
 
 
 Start-Sleep $Waittimefirst
@@ -65,7 +66,7 @@ IF (!($FSLProfileSize -eq $nul))
     {
         if($firstwarn -eq 1) 
         {
-          [System.Windows.MessageBox]::Show('You have almost no space left in your profile: ' + $whatsleft + ' GiB.' + "`n`n" + 'Clean out your profile or contact support!','Warning: Almost no Profile diskspace!','OK','Error') 
+          [System.Windows.Forms.MessageBox]::Show('You have almost no space left in your profile: ' + $whatsleft + ' GiB.' + "`n`n" + 'Clean out your profile or contact support!','Warning: Almost no Profile diskspace!','OK','Error') 
           $firstwarn = 0 
         } else {
             wlrmdr -s 25 -f 3 -t Warning: Almost no Profile diskspace!  -m You have almost no space left in your profile: $whatsleft GiB. Clean out your profile or contact support!
